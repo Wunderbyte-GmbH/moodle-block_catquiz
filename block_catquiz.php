@@ -52,12 +52,8 @@ class block_catquiz extends block_base {
         $this->content->icons = array();
         $this->content->footer = '';
 
-        if (!empty($this->config->text)) {
-            $this->content->text = $this->config->text;
-        } else {
-            $text = 'Please define the content text in /blocks/catquiz/block_catquiz.php.';
-            $this->content->text = $text;
-        }
+        $this->content->text = html_writer::link('https://alise.uni-wuppertal.de/', 'ALiSe-Projektwebseite',
+            ['target' => '_blank']);
 
         return $this->content;
     }
@@ -101,8 +97,9 @@ class block_catquiz extends block_base {
      * @return string[] Array of pages and permissions.
      */
     public function applicable_formats() {
-        return array(
-        );
+        return [
+            'all' => true
+        ];
     }
 
     /**
